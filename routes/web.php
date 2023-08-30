@@ -58,3 +58,9 @@ Route::get("/posts/{id}", function ($id) use ($posts) {
 Route::get("/recent-posts/{days_ago?}", function ($daysAgo = 20) {
     return "Posts from " . $daysAgo . " days ago";
 })->name("posts.recent.index");
+
+Route::get("/fun/response", function () use ($posts) {
+    return response($posts, 201)
+        ->header("Contenct-Type", "application/json")
+        ->cookie("MY_COOKIE", "MJ", 60 * 60);
+});
