@@ -64,3 +64,19 @@ Route::get("/fun/response", function () use ($posts) {
         ->header("Contenct-Type", "application/json")
         ->cookie("MY_COOKIE", "MJ", 60 * 60);
 });
+
+Route::get("/fun/redirect", function () {
+    return redirect("/");
+});
+
+Route::get("/fun/back", function () {
+    return back();
+});
+
+Route::get("/fun/named-route", function () {
+    return redirect()->route("posts.show", ["id" => 1]);
+});
+
+Route::get("/fun/away", function () {
+    return redirect()->away("https://google.com");
+});
