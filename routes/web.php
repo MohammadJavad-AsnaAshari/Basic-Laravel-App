@@ -85,3 +85,7 @@ Route::get("/fun/json", function () use ($posts) {
 //    return response($posts, 200)->header("Content-Type", "application/json");
     return response()->json($posts);
 });
+
+Route::get("/fun/download", function () {
+    return response()->download(public_path("laravelpro_logo.png"), "laravel.png");
+});
