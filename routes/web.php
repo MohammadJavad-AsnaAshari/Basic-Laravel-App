@@ -61,7 +61,7 @@ Route::get("/recent-posts/{days_ago?}", function ($daysAgo = 20) {
 
 Route::get("/fun/response", function () use ($posts) {
     return response($posts, 201)
-        ->header("Contenct-Type", "application/json")
+        ->header("Content-Type", "application/json")
         ->cookie("MY_COOKIE", "MJ", 60 * 60);
 });
 
@@ -79,4 +79,9 @@ Route::get("/fun/named-route", function () {
 
 Route::get("/fun/away", function () {
     return redirect()->away("https://google.com");
+});
+
+Route::get("/fun/json", function () use ($posts) {
+//    return response($posts, 200)->header("Content-Type", "application/json");
+    return response()->json($posts);
 });
