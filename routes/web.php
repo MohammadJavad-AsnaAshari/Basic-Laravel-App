@@ -87,7 +87,7 @@ Route::prefix("/fun")->name("fun.")->group(function () use ($posts) {
 });
 
 Route::get("/database/blog-post/test", function () {
-    $post = \App\Models\BlogPost::findOrFail(10);
+    $posts = \App\Models\BlogPost::all();
 
-    return $post;
+    return $posts->first();
 });
