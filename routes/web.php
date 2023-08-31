@@ -85,3 +85,13 @@ Route::prefix("/fun")->name("fun.")->group(function () use ($posts) {
         return response()->download(public_path("laravelpro_logo.png"), "laravel.png");
     })->name("download");
 });
+
+Route::get("/database/blog-post/test", function () {
+    $post = new \App\Models\BlogPost();
+    $post->title = "I'm the title";
+    $post->content = "I'm the content";
+
+    $post->save();
+
+    return $post;
+});
