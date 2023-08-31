@@ -86,8 +86,17 @@ Route::prefix("/fun")->name("fun.")->group(function () use ($posts) {
     })->name("download");
 });
 
-Route::get("/database/blog-post/test", function () {
-    $posts = \App\Models\BlogPost::all();
+Route::prefix("/database")->name("database.")->group(function () {
+    Route::get("/blog-post/test", function () {
+        $posts = \App\Models\BlogPost::all();
 
-    return $posts->first();
+        return $posts->first();
+    })->name("blog-post");
+
+    Route::get("/user/test", function () {
+//        $users = \App\Models\User::factory()->count(5)->create();
+        $user = \App\Models\User::where('id', "<=", 3)->orderBy('id', "desc")->get();
+
+        return $user;
+    })->name("user");
 });
