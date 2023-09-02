@@ -9,6 +9,11 @@
 </head>
 <body>
 <div>
+    @if(session("status"))
+        <div style="background-color: orange; color: white">
+            {{session("status")}}
+        </div>
+    @endif
     @yield("content")
 </div>
 </body>
