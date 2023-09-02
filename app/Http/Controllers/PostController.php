@@ -32,8 +32,8 @@ class PostController extends Controller
         $post = new BlogPost();
 
         $data = $request->validate([
-            "title" => "required",
-            "content" => "required"
+            "title" => "bail|required|min:5|max:50",
+            "content" => "required|min:10"
         ]);
 
         $post->title = $data["title"];
