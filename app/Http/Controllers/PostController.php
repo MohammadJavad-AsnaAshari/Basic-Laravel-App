@@ -29,7 +29,19 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+        $post = new BlogPost();
+
+        $data = $request->validate([
+            "title" => "required",
+            "content" => "required"
+        ]);
+
+        $post->title = $data["title"];
+        $post->content = $data["content"];
+
+        $post->save();
+
+        return redirect()->route("posts.show", $post->id);
     }
 
     /**
