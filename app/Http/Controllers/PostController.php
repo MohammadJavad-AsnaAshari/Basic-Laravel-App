@@ -58,9 +58,18 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StorePost $request, string $id)
     {
-        //
+        $post = BlogPost::findOrFail($id);
+        $validated = $request->validated();
+
+        $post->update($validated);
+//        $post->fill($validated);
+//        $post->save();
+
+        $request->session()->flash("status", "Blog post was updated!");
+
+        return redirect()->route("posts.show", ["post" => $post->id]);
     }
 
     /**
