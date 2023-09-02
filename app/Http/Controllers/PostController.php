@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePost;
 use App\Models\BlogPost;
 use Illuminate\Http\Request;
 
@@ -27,17 +28,14 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePost $request)
     {
         $post = new BlogPost();
 
-        $data = $request->validate([
-            "title" => "bail|required|min:5|max:50",
-            "content" => "required|min:10"
-        ]);
+        $validated = $request->validated();
 
-        $post->title = $data["title"];
-        $post->content = $data["content"];
+        $post->title = $validated["title"];
+        $post->content = $validated["content"];
 
         $post->save();
 
