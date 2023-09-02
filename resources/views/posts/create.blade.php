@@ -13,7 +13,7 @@
             @enderror
         </div>
         <div>
-            <textarea name="content"></textarea>
+            <textarea name="content">{{old('content')}}</textarea>
             @error("content")
                 <div>{{$message}}</div>
             @enderror
