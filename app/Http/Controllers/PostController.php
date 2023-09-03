@@ -77,6 +77,11 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $post = BlogPost::findOrFail($id);
+
+        $post->delete();
+
+        session()->flash("status", "Blog post was deleted!");
+        return back();
     }
 }
