@@ -8,8 +8,8 @@
         @method("put")
 
         @include("posts.partials.form")
-        <div>
-            <input type="submit" value="Update">
+        <div class="d-grid">
+            <input class="btn btn-primary" type="submit" value="Update">
         </div>
     </form>
 @endsection
