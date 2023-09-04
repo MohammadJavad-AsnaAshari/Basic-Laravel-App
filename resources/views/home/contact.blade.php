@@ -3,4 +3,5 @@
 
 @section("content")
     <h1>Contact Page</h1>
+    <p>Hello this is contact page!</p>
 @endsection
